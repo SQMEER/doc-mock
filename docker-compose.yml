@@ -1,0 +1,22 @@
+version: '3.0'
+service:
+  sql:
+    image: mysql:latest
+    environment: 
+      - "MYSQL_ROOT_PASSWORD=secretpass"
+    ports:
+      - "3306:3306"
+    volumes:
+      - /home/ec2-user/query:/sql
+    
+  red:
+    image: redis:latest
+    volume:
+      - /home/ec2-user/color:/red
+
+  beebox:
+    image: busybox:latest
+    volumes:
+      - /home/ec2-user/busyb:/abc
+
+
